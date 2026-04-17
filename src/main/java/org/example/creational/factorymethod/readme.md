@@ -2,11 +2,11 @@
 
 El patrón **Factory Method** es un patrón de diseño creacional que proporciona una interfaz para crear objetos en una superclase, pero permite que las subclases alteren el tipo de objetos que se crearán.
 
-## Caso de uso
+### Caso de uso
 
 Este patrón se utiliza cuando se requiere crear clases y no se sabe con exactitud que clase se creará, o, se usa en tiempo de ejecución cuando se requiere inicializar una clase con configuraciones en producción
 
-## Diagrama UML
+### Diagrama UML
 
 Este diagrama muestra cómo la clase creadora delega la instanciación a sus subclases:
 
@@ -48,15 +48,15 @@ classDiagram
     }
 
     %% Relaciones de Implementación y Herencia
-    MetodoPago <|.. PayPal
-    MetodoPago <|.. GooglePay
-    MetodoPago <|.. TarjetaCredito
+    MetodoPago <|.. PayPal : "implementa"
+    MetodoPago <|.. GooglePay : "implementa"
+    MetodoPago <|.. TarjetaCredito : "implementa"
 
-    ProcesadorPagos <|-- ProcesadorPayPal
-    ProcesadorPagos <|-- ProcesadorGooglePay
-    ProcesadorPagos <|-- ProcesadorTarjeta
+    ProcesadorPagos <|-- ProcesadorPayPal : "hereda"
+    ProcesadorPagos <|-- ProcesadorGooglePay : "hereda"
+    ProcesadorPagos <|-- ProcesadorTarjeta : "hereda"
 
     %% Relaciones de Creación (Dependencia)
-    ProcesadorPayPal ..> PayPal : "crea"
-    ProcesadorGooglePay ..> GooglePay : "crea"
-    ProcesadorTarjeta ..> TarjetaCredito : "crea"
+    ProcesadorPayPal ..> PayPal : "instancia"
+    ProcesadorGooglePay ..> GooglePay : "instancia"
+    ProcesadorTarjeta ..> TarjetaCredito : "instancia"
