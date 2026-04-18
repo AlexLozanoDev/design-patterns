@@ -11,10 +11,11 @@ import org.example.creational.factorymethod.TypesPayment;
 import org.example.creational.prototype.Enemigo;
 import org.example.creational.prototype.EnemyRegistry;
 import org.example.creational.prototype.OrcoGuerrero;
+import org.example.creational.singleton.DatabaseConnection;
 
 public class Main {
     public static void main(String[] args) {
-        prototype();
+        singleton();
     }
 
     private static void factoryMethod(){
@@ -66,5 +67,15 @@ public class Main {
 
         orco1.mostrarInfo();
         orco2.mostrarInfo();
+    }
+
+    private static void singleton(){
+        // Intentar crear dos instancias
+        DatabaseConnection conn1 = DatabaseConnection.getInstance();
+        DatabaseConnection conn2 = DatabaseConnection.getInstance();
+
+        conn1.query("SELECT * FROM patterns");
+        // Verificamos que son exactamente el mismo objeto en memoria
+        System.out.println("¿Es la misma instancia? " + (conn1 == conn2));
     }
 }
